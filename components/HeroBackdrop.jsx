@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import { supportsWebGL2 } from "@/lib/webgl";
 import styles from "./HeroBackdrop.module.css";
 
 /*
@@ -9,18 +10,6 @@ import styles from "./HeroBackdrop.module.css";
  * hydration so it never blocks the hero's first paint or the LCP image.
  */
 const FluxLines = dynamic(() => import("./FluxLines"), { ssr: false });
-
-function supportsWebGL2() {
-  try {
-    const canvas = document.createElement("canvas");
-    const gl = canvas.getContext("webgl2");
-    if (!gl) return false;
-    gl.getExtension("WEBGL_lose_context")?.loseContext();
-    return true;
-  } catch {
-    return false;
-  }
-}
 
 export default function HeroBackdrop() {
   const [active, setActive] = useState(false);
@@ -89,15 +78,15 @@ export default function HeroBackdrop() {
         {active ? (
           <FluxLines
             className={styles.canvasLayer}
-            colors={["#8b7bff", "#5b8cff", "#a78bfa"]}
+            colors={["#fff7d6", "#fbbf24", "#f59e0b"]}
             speed={0.35}
             scale={1.5}
-            glow={0.9}
-            rimWidth={0.16}
-            lineWidth={0.9}
+            glow={2}
+            rimWidth={0.2}
+            lineWidth={1}
             shimmer={1}
             turbulence={0.8}
-            opacity={0.12}
+            opacity={0.4}
             flowDirection="down"
             dpr={dpr}
             mouseInteraction={interactive}

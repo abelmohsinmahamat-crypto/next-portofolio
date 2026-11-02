@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import CallToAction from "@/components/CallToAction";
 import HeroBackdrop from "@/components/HeroBackdrop";
+import LanyardBadge from "@/components/LanyardBadge";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -64,30 +64,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className={styles.portrait}>
-              <div className={styles.portraitGlow} aria-hidden="true" />
-              <div className={styles.portraitFrame}>
-                <Image
-                  src="/images/portrait.jpg"
-                  alt={`Portrait de ${site.name}, ${site.role.toLowerCase()}`}
-                  width={409}
-                  height={526}
-                  preload
-                  sizes="(max-width: 560px) 100vw, (max-width: 900px) 70vw, 420px"
-                  className={styles.portraitImage}
-                />
-              </div>
-              <div className={styles.portraitCard}>
-                <span className={styles.portraitCardLabel}>
-                  <span className={styles.portraitCardDot} aria-hidden="true" />
-                  Focus
-                </span>
-                <span className={styles.portraitCardValue}>Frontend + API</span>
-              </div>
-              <span className={styles.portraitTag} aria-hidden="true">
-                Next.js
-              </span>
-            </div>
+            <LanyardBadge />
           </div>
         </div>
       </section>

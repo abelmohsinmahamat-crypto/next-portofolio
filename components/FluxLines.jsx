@@ -473,7 +473,15 @@ const FluxLines = ({
       gl.deleteProgram(program.program);
       gl.deleteBuffer(buffer);
       gl.deleteVertexArray(vao);
-      gl.getExtension("WEBGL_lose_context")?.loseContext();
+      /*
+       * React StrictMode runs effects twice in development, cleaning up between
+       * the two runs while the canvas is still mounted. Losing the context there
+       * would leave the second run with a dead context (blank canvas), so only
+       * release it once the element is actually detached.
+       */
+      if (!canvas.isConnected) {
+        gl.getExtension("WEBGL_lose_context")?.loseContext();
+      }
     };
   }, []);
 

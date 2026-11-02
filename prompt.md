@@ -1,104 +1,120 @@
-# Task: Integrate React Bits FluxLines as the Home Page Background
+Integrate React Bits Lanyard into the Hero Section
 
-I want you to integrate the **FluxLines** background component from React Bits into my existing project.
+I want you to integrate the Lanyard component from React Bits into my portfolio's Hero section.
 
-## 1. Component documentation
+1. Install the component
 
-- Official documentation: https://reactbits.dev/backgrounds/flux-lines
-- Registry JSON: https://reactbits.dev/r/FluxLines-JS-CSS.json
-- Full component library: https://reactbits.dev/llms.txt
+Use the JavaScript + CSS variant.
 
-Use the **JS-CSS variant (JavaScript + plain CSS)**.
+bash
+npx shadcn@latest add @react-bits/Lanyard-JS-CSS
 
-## 2. Installation
 
-First, inspect my existing project structure and identify the framework, styling system, and Home page implementation.
+Documentation: https://reactbits.dev/components/lanyard
 
-Install the component using:
+Registry source: https://reactbits.dev/r/Lanyard-JS-CSS.json
 
-```bash
-npx shadcn@latest add @react-bits/FluxLines-JS-CSS
-```
+Install all required dependencies specified by the registry. Use the exact official component source.
 
-Fetch and inspect the registry JSON to obtain the exact component source and dependencies.
+2. Hero section layout
 
-Install any missing dependencies listed in the registry.
+Create a modern, premium and visually attractive Hero section with a two-column layout:
 
-Do not recreate the component manually if the official source is available.
+Left column:
 
-## 3. Component configuration
+My name and professional title.
+A short introduction.
+A strong headline.
+Two CTA buttons: "View My Projects" and "Contact Me".
+Keep the typography clean and modern.
 
-Use the following configuration:
+Right column:
 
-```jsx
-import FluxLines from './FluxLines';
+Display the interactive 3D Lanyard component.
+The Lanyard must be visually prominent.
+Make it look like a real hanging professional ID badge.
+Keep the badge naturally suspended with realistic physics and smooth interactions.
+3. IMPORTANT: Use my actual photo on the badge
 
-<div style={{ width: '100%', height: '600px', position: 'relative' }}>
-  <FluxLines
-    colors={['#ffffff', '#ffffff', '#ffffff']}
-    glow={2}
-    rimWidth={0.2}
-    lineWidth={1}
-    flowDirection="down"
-    mouseInteraction
-    clickSwirl
+I already have a personal photo in my project.
+
+Find the existing profile photo in the project assets (public, assets, images, or similar directories).
+
+Use that exact photo as the front image of the Lanyard badge.
+
+Do NOT generate a new portrait. Do NOT use a random stock photo. Do NOT replace my existing profile picture.
+
+The front of the badge must display:
+
+My actual profile photo.
+My name, if available in the existing portfolio content.
+My professional title.
+A clean, premium ID-card design.
+
+The back of the badge can display:
+
+My professional email, if available.
+My portfolio URL.
+My social media links or a short personal tagline.
+
+Do not invent personal information.
+
+4. Component configuration
+
+Use this configuration and adapt the image paths to the actual assets:
+
+jsx
+import Lanyard from './Lanyard';
+
+<div style={{ width: '100%', height: '600px' }}>
+  <Lanyard
+    frontImage="/card-front.png"
+    backImage="/card-back.png"
+    strapImage="/band.png"
   />
 </div>
-```
 
-## 4. Integration into the Home page
 
-My main objective is to use FluxLines as an animated background for the entire Hero section of my Home page.
+Create the front and back badge designs using my actual profile information and photo. Create a matching strap design if needed.
 
-Requirements:
+5. Design requirements
+Premium dark aesthetic.
+Smooth animations.
+Elegant typography.
+Balanced spacing.
+Subtle background gradients or glow effects.
+The badge must not overlap the Hero text.
+The Lanyard should attract attention without making the page feel cluttered.
+6. Responsive design
 
-- Place FluxLines behind the Hero content.
-- Make the animation cover the full Hero section.
-- Use absolute positioning for the background layer.
-- Keep the Hero content in a higher z-index.
-- Ensure all text, headings, buttons, navigation and other interactive elements remain readable and clickable.
-- Keep the animation responsive on desktop, tablet and mobile.
-- Avoid horizontal or vertical overflow.
-- Make sure the background does not interfere with existing animations or interactions.
+Desktop:
 
-## 5. Design expectations
+Text on the left.
+Large interactive Lanyard on the right.
 
-I want a professional, modern and futuristic portfolio aesthetic.
+Mobile:
 
-The desired appearance:
-
-- Dark background.
-- Elegant white animated flux lines.
-- Smooth flowing animation.
-- Subtle glow effects.
-- Interactive mouse movement.
-- Click interaction using `clickSwirl`.
-- Beautiful contrast between the background and Hero content.
-
-The animation should enhance the design rather than distract visitors from the main content.
-
-## 6. Important implementation rules
-
-- Preserve my existing Home page content and design.
-- Do not remove existing components or sections.
-- Do not unnecessarily modify the global CSS.
-- Avoid duplicate CSS or dependencies.
-- Keep the component reusable and maintainable.
-- Respect my existing project architecture.
-- If the project uses Next.js App Router, handle browser-only animation requirements with a Client Component (`'use client'`) where necessary.
-- Ensure proper cleanup of animation loops and event listeners.
-- Respect reduced-motion accessibility preferences where possible.
-
-## 7. Final verification
+Text first.
+Lanyard underneath.
+Reduce the component height appropriately.
+Prevent horizontal overflow.
+Ensure the badge remains fully visible and interactive.
+7. Important technical requirements
+Inspect the existing project structure before making changes.
+Respect the existing framework, architecture, styling conventions and routing.
+Do not unnecessarily rewrite existing components.
+Reuse my existing profile photo.
+Preserve all existing portfolio functionality.
+Avoid duplicate dependencies.
+Make sure the component works correctly after installation.
+8. Final verification
 
 After implementation:
 
-1. Verify that the component is correctly installed.
-2. Check that all dependencies are available.
-3. Run the project.
-4. Fix any import, CSS, rendering or console errors.
-5. Run the production build.
-6. Confirm that FluxLines appears behind the Home page Hero content.
-7. Ensure the rest of the website remains unchanged.
+Check that all imports are correct.
+Verify that all image paths resolve.
+Check the console for errors.
+Run the project's build command.
+Fix any errors caused by the integration.
 
-**Final objective:** Give my portfolio Home page a beautiful, futuristic animated background using the official React Bits FluxLines component, without compromising performance, accessibility or the existing design.
+Final goal: A visually impressive portfolio Hero section where my real photograph appears on a realistic, interactive 3D hanging ID badge using React Bits Lanyard.
