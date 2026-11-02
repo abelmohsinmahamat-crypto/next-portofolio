@@ -1,0 +1,70 @@
+.backdrop {
+  position: absolute;
+  top: calc(-1 * var(--header-height));
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  contain: paint;
+  pointer-events: none;
+  user-select: none;
+}
+
+/*
+ * The WebGL canvas (and its static fallback) live in this masked layer so the
+ * lines dissolve into the page instead of ending on a hard section edge.
+ */
+.effect {
+  position: absolute;
+  inset: 0;
+  opacity: 0.72;
+  -webkit-mask-image: radial-gradient(ellipse 90% 88% at 50% 30%, #000 18%, rgba(0, 0, 0, 0.72) 52%, transparent 82%);
+  mask-image: radial-gradient(ellipse 90% 88% at 50% 30%, #000 18%, rgba(0, 0, 0, 0.72) 52%, transparent 82%);
+}
+
+/*
+ * Shown immediately on the server and kept underneath the canvas. It covers
+ * three cases: first paint, WebGL unavailable, and prefers-reduced-motion.
+ */
+.fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(55% 55% at 50% 28%, rgba(139, 123, 255, 0.18), transparent 72%),
+    radial-gradient(45% 45% at 78% 62%, rgba(91, 140, 255, 0.14), transparent 75%);
+}
+
+.canvasLayer {
+  position: absolute;
+  inset: 0;
+}
+
+/*
+ * Keeps the hero copy legible over the animated lines without hiding the
+ * effect around the portrait. Darkens the bottom edge into the page colour.
+ */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(7, 10, 19, 0.62) 0%, rgba(7, 10, 19, 0.24) 38%, rgba(7, 10, 19, 0) 65%),
+    linear-gradient(180deg, rgba(7, 10, 19, 0.5) 0%, rgba(7, 10, 19, 0) 18%, rgba(7, 10, 19, 0) 62%, rgba(7, 10, 19, 0.95) 100%);
+}
+
+@media (max-width: 900px) {
+  .effect {
+    opacity: 0.6;
+  }
+
+  .scrim {
+    background:
+      linear-gradient(180deg, rgba(7, 10, 19, 0.45) 0%, rgba(7, 10, 19, 0.12) 26%, rgba(7, 10, 19, 0.28) 66%, rgba(7, 10, 19, 0.95) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .effect {
+    opacity: 0.55;
+  }
+}

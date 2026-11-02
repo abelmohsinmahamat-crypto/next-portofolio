@@ -1,0 +1,302 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  border-color: color-mix(in srgb, var(--project-accent) 45%, var(--border));
+  box-shadow: var(--shadow-lg);
+}
+
+.visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--project-accent) 28%, transparent), transparent 62%),
+    linear-gradient(140deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  isolation: isolate;
+}
+
+.visualImage {
+  background: #0a0f1d;
+}
+
+.image {
+  z-index: 0;
+  object-fit: cover;
+  transform: scale(1.04);
+  filter: saturate(0.92) brightness(0.9);
+  will-change: transform;
+  transition:
+    transform 900ms var(--ease),
+    filter 600ms var(--ease);
+}
+
+.imageShade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(7, 10, 19, 0.52), transparent 55%),
+    linear-gradient(135deg, color-mix(in srgb, var(--project-accent) 16%, transparent), transparent 58%);
+  opacity: 0.75;
+  transition: opacity 600ms var(--ease);
+}
+
+.shine {
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  left: 0;
+  z-index: 2;
+  width: 42%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  opacity: 0;
+  transform: translateX(-180%) skewX(-18deg);
+  transition:
+    transform 900ms var(--ease),
+    opacity 500ms var(--ease);
+}
+
+.card:hover .image,
+.card:focus-within .image {
+  transform: scale(1.07);
+  filter: saturate(1.05) brightness(1);
+}
+
+.card:hover .imageShade,
+.card:focus-within .imageShade {
+  opacity: 1;
+}
+
+.card:hover .shine,
+.card:focus-within .shine {
+  opacity: 1;
+  transform: translateX(320%) skewX(-18deg);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.5;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+  mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+}
+
+.monogram {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 2.35rem;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  color: color-mix(in srgb, var(--project-accent) 78%, white);
+  text-shadow: 0 0 32px color-mix(in srgb, var(--project-accent) 55%, transparent);
+  transition: transform var(--transition);
+}
+
+.card:hover .monogram {
+  transform: scale(1.06);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 22px 24px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.title {
+  font-size: 1.22rem;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+.description {
+  flex: 1;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 8px 9px 8px 16px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 36%, var(--border));
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--project-accent) 16%, transparent),
+    rgba(255, 255, 255, 0.02)
+  );
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  isolation: isolate;
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition),
+    color var(--transition);
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20%;
+  z-index: 0;
+  background: linear-gradient(100deg, transparent 32%, rgba(255, 255, 255, 0.22) 50%, transparent 68%);
+  transform: translateX(-70%) rotate(6deg);
+  transition: transform 650ms var(--ease);
+}
+
+.link:hover,
+.link:focus-visible {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--project-accent) 72%, white);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--project-accent) 26%, transparent),
+    rgba(255, 255, 255, 0.045)
+  );
+  box-shadow:
+    0 12px 26px -14px color-mix(in srgb, var(--project-accent) 65%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.link:hover::before,
+.link:focus-visible::before {
+  transform: translateX(70%) rotate(6deg);
+}
+
+.linkLabel {
+  position: relative;
+  z-index: 1;
+}
+
+.linkIcon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--project-accent) 20%, transparent);
+  color: color-mix(in srgb, var(--project-accent) 76%, white);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.link:hover .linkIcon,
+.link:focus-visible .linkIcon {
+  transform: rotate(10deg) scale(1.08);
+  background: var(--project-accent);
+  color: #070a13;
+}
+
+.link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition);
+}
+
+.link:hover svg,
+.link:focus-visible svg {
+  transform: translate(1px, -1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover,
+  .monogram,
+  .image,
+  .imageShade,
+  .shine,
+  .link,
+  .link::before,
+  .linkIcon,
+  .link svg {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card:hover .image,
+  .card:focus-within .image {
+    transform: scale(1.04);
+    filter: saturate(0.92) brightness(0.9);
+  }
+
+  .card:hover .imageShade,
+  .card:focus-within .imageShade {
+    opacity: 0.75;
+  }
+
+  .card:hover .shine,
+  .card:focus-within .shine {
+    opacity: 0;
+    transform: translateX(-180%) skewX(-18deg);
+  }
+
+  .card:hover .monogram,
+  .link:hover,
+  .link:focus-visible,
+  .link:hover .linkIcon,
+  .link:focus-visible .linkIcon,
+  .link:hover svg,
+  .link:focus-visible svg {
+    transform: none;
+  }
+
+  .link:hover::before,
+  .link:focus-visible::before {
+    transform: translateX(-70%) rotate(6deg);
+  }
+}

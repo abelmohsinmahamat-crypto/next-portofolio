@@ -1,0 +1,38 @@
+.page {
+  padding-block: clamp(56px, 8vw, 96px) clamp(32px, 5vw, 56px);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 680px;
+  margin-top: clamp(32px, 5vw, 48px);
+  padding: clamp(28px, 5vw, 48px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(139, 123, 255, 0.16), transparent 55%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  box-shadow: var(--shadow-md);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.time {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

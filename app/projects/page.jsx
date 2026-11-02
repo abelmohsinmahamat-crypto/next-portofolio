@@ -1,37 +1,56 @@
+import CallToAction from "@/components/CallToAction";
+import ProjectCard from "@/components/ProjectCard";
+import Reveal from "@/components/Reveal";
+import { projects } from "@/lib/projects";
+import styles from "./projects.module.css";
 
-const projects = [
-  {
-    name: "AI CV Analyzer",
-    description:
-      "Une application d'analyse de CV et de matching d'offres.",
-    technologies: "React, Node.js, MongoDB",
-  },
-  {
-    name: "Weather Dashboard",
-    description:
-      "Un tableau de bord pour consulter la météo.",
-    technologies: "React, API météo, CSS",
-  },
-  {
-    name: "Portfolio",
-    description:
-      "Un site pour présenter mes compétences et projets.",
-    technologies: "Next.js, React, CSS",
-  },
-];
+export const metadata = {
+  title: "Projets",
+  description:
+    "Sélection de projets personnels de Mohsin : analyse de CV avec IA, tableau de bord météo et portfolio Next.js.",
+};
 
 export default function ProjectsPage() {
   return (
-    <main>
-      <h1>Mes projets</h1>
+    <>
+      <section className={styles.projects}>
+        <div className="container">
+          <header className={styles.header}>
+            <div className={styles.headerTop}>
+              <span className={styles.eyebrow}>Portfolio</span>
+              <span className={styles.headerLine} aria-hidden="true" />
+              <span className={styles.headerCount}>{String(projects.length).padStart(2, "0")} projets</span>
+            </div>
 
-      {projects.map((project) => (
-        <article key={project.name}>
-          <h2>{project.name}</h2>
-          <p>{project.description}</p>
-          <p>{project.technologies}</p>
-        </article>
-      ))}
-    </main>
+            <div className={styles.headerGrid}>
+              <h1 className={styles.title}>
+                Des projets qui résolvent des <span className="text-gradient">problèmes concrets</span>.
+              </h1>
+              <div className={styles.intro}>
+                <p className={styles.description}>
+                  Chaque projet est l’occasion de travailler une problématique complète : compréhension du besoin,
+                  interface, données et mise en ligne.
+                </p>
+              </div>
+            </div>
+          </header>
+
+          <div className={styles.grid}>
+            {projects.map((project, index) => (
+              <Reveal key={project.slug} delay={index * 80} className={styles.cardWrap}>
+                <ProjectCard project={project} headingLevel={2} eager={index < 2} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CallToAction
+        eyebrow="Votre projet"
+        title="Une idée à transformer en application ?"
+        description="Parlons de votre besoin, de vos contraintes et de la manière de construire quelque chose d'utile et de durable."
+        label="Me contacter"
+      />
+    </>
   );
 }
