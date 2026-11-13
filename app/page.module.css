@@ -1,7 +1,9 @@
 .hero {
   position: relative;
   isolation: isolate;
-  padding-block: clamp(56px, 8vw, 104px) clamp(48px, 7vw, 88px);
+  --hero-pad-top: clamp(20px, 2.8vw, 40px);
+  --hero-pad-bottom: clamp(36px, 4.5vw, 64px);
+  padding-block: var(--hero-pad-top) var(--hero-pad-bottom);
 }
 
 .hero :global(.container) {

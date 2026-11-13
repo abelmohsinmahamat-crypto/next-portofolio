@@ -3,7 +3,19 @@
   display: grid;
   place-items: center;
   width: 100%;
+  /* Fallback for browsers without small-viewport units. */
   height: clamp(470px, 46vw, 620px);
+  /*
+   * Keep the whole hero (copy + badge) visible below the sticky header:
+   * the badge height is capped by the viewport height minus the header, the
+   * hero's vertical padding and a small safety margin, while never shrinking
+   * below a usable size. The paddings are inherited from the hero section.
+   */
+  height: clamp(
+    340px,
+    min(46vw, calc(100svh - var(--header-height) - var(--hero-pad-top, 40px) - var(--hero-pad-bottom, 64px) - 4px)),
+    620px
+  );
   isolation: isolate;
 }
 
