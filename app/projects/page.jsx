@@ -1,6 +1,5 @@
 import CallToAction from "@/components/CallToAction";
-import ProjectCard from "@/components/ProjectCard";
-import Reveal from "@/components/Reveal";
+import ProjectsExplorer from "@/components/ProjectsExplorer";
 import { projects } from "@/lib/projects";
 import styles from "./projects.module.css";
 
@@ -35,13 +34,7 @@ export default function ProjectsPage() {
             </div>
           </header>
 
-          <div className={styles.grid}>
-            {projects.map((project, index) => (
-              <Reveal key={project.slug} delay={index * 80} className={styles.cardWrap}>
-                <ProjectCard project={project} headingLevel={2} eager={index < 2} />
-              </Reveal>
-            ))}
-          </div>
+          <ProjectsExplorer projects={projects} />
         </div>
       </section>
 

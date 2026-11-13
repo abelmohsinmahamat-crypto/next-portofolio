@@ -1,120 +1,74 @@
-Integrate React Bits Lanyard into the Hero Section
+# Task: Redesign the Projects Section with Interactive Expandable Cards
 
-I want you to integrate the Lanyard component from React Bits into my portfolio's Hero section.
+I want you to redesign ONLY the Projects section of my existing Next.js portfolio.
 
-1. Install the component
+## Main Objective
+I currently have exactly four (04) project cards. I want to transform them into modern, interactive, expandable project cards.
 
-Use the JavaScript + CSS variant.
+The main interaction should be:
+- Initially, display all four project cards in a responsive 2-column grid.
+- Each card should show its project image, title, and only a short preview of its description.
+- Hide the remaining part of the description below the image using a subtle gradient fade or a collapsed content area.
+- When the user clicks anywhere on a card, smoothly expand that card and reveal its complete description.
 
-bash
-npx shadcn@latest add @react-bits/Lanyard-JS-CSS
+## Expand Interaction
+When a card is clicked:
+1. Expand the selected card smoothly using Framer Motion.
+2. Reveal the full project description.
+3. Display the technologies used as attractive badges.
+4. Show the project features or key highlights.
+5. Display two action buttons:
+   - Live Demo
+   - GitHub Repository
+6. Add a clear Collapse / Show Less interaction.
 
+When another card is opened, close the previously expanded card.
 
-Documentation: https://reactbits.dev/components/lanyard
+## Design Requirements
+Create a premium, modern developer portfolio aesthetic.
 
-Registry source: https://reactbits.dev/r/Lanyard-JS-CSS.json
+- Dark background consistent with my existing portfolio.
+- Modern glassmorphism where appropriate.
+- Rounded corners (16px–24px).
+- Subtle borders and elegant shadows.
+- High-quality project screenshots.
+- Smooth hover transitions.
+- Attractive typography and spacing.
+- Use a subtle image zoom effect on hover.
+- Add a gradient overlay at the bottom of the image.
+- The collapsed description should look partially hidden, not abruptly cut off.
 
-Install all required dependencies specified by the registry. Use the exact official component source.
+## React Bits Integration
+Explore React Bits components and integrate them only where useful.
 
-2. Hero section layout
+Prioritize:
+- AnimatedContent for revealing project information.
+- TiltedCard for subtle 3D hover interactions, if compatible with the expansion behavior.
+- Framer Motion AnimatePresence and layout animations for smooth expansion and collapse.
 
-Create a modern, premium and visually attractive Hero section with a two-column layout:
+Do not add unnecessary animations.
 
-Left column:
+## Technical Requirements
+- Use my existing Next.js architecture and project structure.
+- Use JavaScript/JSX, not TypeScript.
+- Keep the existing four projects and their original information.
+- Preserve existing images, project links, GitHub URLs and technologies.
+- Make the cards fully responsive.
+- Ensure accessibility with keyboard navigation, proper buttons and ARIA attributes.
+- Respect prefers-reduced-motion.
+- Avoid layout shifts and overlapping content.
+- Ensure the cards work properly on mobile, tablet and desktop.
+- Avoid installing unnecessary dependencies if they are already available.
 
-My name and professional title.
-A short introduction.
-A strong headline.
-Two CTA buttons: "View My Projects" and "Contact Me".
-Keep the typography clean and modern.
+## Important
+Before implementing:
+1. Inspect my existing Projects section and its components.
+2. Identify the current styling system and installed dependencies.
+3. Reuse my existing project data instead of creating fake projects.
+4. Preserve the overall visual identity of my portfolio.
+5. Do not modify other sections of the portfolio.
 
-Right column:
+## Expected Result
+A beautiful Projects section with four interactive cards, where descriptions are initially partially hidden and become fully visible through a smooth click-to-expand animation.
 
-Display the interactive 3D Lanyard component.
-The Lanyard must be visually prominent.
-Make it look like a real hanging professional ID badge.
-Keep the badge naturally suspended with realistic physics and smooth interactions.
-3. IMPORTANT: Use my actual photo on the badge
-
-I already have a personal photo in my project.
-
-Find the existing profile photo in the project assets (public, assets, images, or similar directories).
-
-Use that exact photo as the front image of the Lanyard badge.
-
-Do NOT generate a new portrait. Do NOT use a random stock photo. Do NOT replace my existing profile picture.
-
-The front of the badge must display:
-
-My actual profile photo.
-My name, if available in the existing portfolio content.
-My professional title.
-A clean, premium ID-card design.
-
-The back of the badge can display:
-
-My professional email, if available.
-My portfolio URL.
-My social media links or a short personal tagline.
-
-Do not invent personal information.
-
-4. Component configuration
-
-Use this configuration and adapt the image paths to the actual assets:
-
-jsx
-import Lanyard from './Lanyard';
-
-<div style={{ width: '100%', height: '600px' }}>
-  <Lanyard
-    frontImage="/card-front.png"
-    backImage="/card-back.png"
-    strapImage="/band.png"
-  />
-</div>
-
-
-Create the front and back badge designs using my actual profile information and photo. Create a matching strap design if needed.
-
-5. Design requirements
-Premium dark aesthetic.
-Smooth animations.
-Elegant typography.
-Balanced spacing.
-Subtle background gradients or glow effects.
-The badge must not overlap the Hero text.
-The Lanyard should attract attention without making the page feel cluttered.
-6. Responsive design
-
-Desktop:
-
-Text on the left.
-Large interactive Lanyard on the right.
-
-Mobile:
-
-Text first.
-Lanyard underneath.
-Reduce the component height appropriately.
-Prevent horizontal overflow.
-Ensure the badge remains fully visible and interactive.
-7. Important technical requirements
-Inspect the existing project structure before making changes.
-Respect the existing framework, architecture, styling conventions and routing.
-Do not unnecessarily rewrite existing components.
-Reuse my existing profile photo.
-Preserve all existing portfolio functionality.
-Avoid duplicate dependencies.
-Make sure the component works correctly after installation.
-8. Final verification
-
-After implementation:
-
-Check that all imports are correct.
-Verify that all image paths resolve.
-Check the console for errors.
-Run the project's build command.
-Fix any errors caused by the integration.
-
-Final goal: A visually impressive portfolio Hero section where my real photograph appears on a realistic, interactive 3D hanging ID badge using React Bits Lanyard.
+The final result must look like a premium developer portfolio, not a generic template.
