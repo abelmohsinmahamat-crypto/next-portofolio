@@ -136,11 +136,11 @@ export default function InkOrbitSculpture({
 
     current.from = canMorph ? current.to : null;
     current.to = nextCloud;
-    current.morph = canMorph && !reducedMotion ? 0 : 1;
-    current.ring = canMorph && !reducedMotion ? 1 : 0;
+    current.morph = canMorph && !current.reduced ? 0 : 1;
+    current.ring = canMorph && !current.reduced ? 1 : 0;
     current.dirty = true;
     builtRef.current = { seed, grainN };
-  }, [seed, grainN, reducedMotion]);
+  }, [seed, grainN]);
 
   useEffect(() => {
     if (!autoReforge || autoReforge <= 0 || reducedMotion) return undefined;

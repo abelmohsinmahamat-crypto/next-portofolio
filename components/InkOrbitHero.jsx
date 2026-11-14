@@ -109,7 +109,7 @@ export default function InkOrbitHero({
   const currentWord = accents[wordIndex % accents.length];
 
   return (
-    <section className={`${styles.root} ${className}`.trim()} aria-labelledby="hero-title">
+    <section className={`${styles.root} ${className}`.trim()} aria-label="Introduction">
       <div className={`container ${styles.shell}`}>
         <div className={styles.panel}>
           <div className={styles.copy}>
