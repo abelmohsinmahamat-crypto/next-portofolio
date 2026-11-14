@@ -1,7 +1,6 @@
 import Link from "next/link";
 import CallToAction from "@/components/CallToAction";
-import HeroBackdrop from "@/components/HeroBackdrop";
-import LanyardBadge from "@/components/LanyardBadge";
+import InkOrbitHero from "@/components/InkOrbitHero";
 import ProjectCard from "@/components/ProjectCard";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -86,49 +85,17 @@ export default function HomePage() {
 
   return (
     <>
-      <section className={styles.hero}>
-        <HeroBackdrop />
-
-        <div className="container">
-          <div className={styles.heroGrid}>
-            <div className={styles.heroCopy}>
-              <span className={`badge ${styles.heroBadge}`}>
-                <span className={styles.heroBadgeDot} aria-hidden="true" />
-                {site.name} · {site.role}
-              </span>
-
-              <h1 className={styles.heroTitle}>
-                Je construis des <span className="text-gradient">expériences web</span> modernes, du frontend jusqu’à l’API.
-              </h1>
-
-              <p className={styles.heroText}>{site.description}</p>
-
-              <div className={styles.heroActions}>
-                <Link href="/projects" className="btn btn-primary">
-                  Voir mes projets
-                  <ArrowIcon />
-                </Link>
-                <Link href="/contact" className="btn btn-secondary">
-                  Me contacter
-                </Link>
-              </div>
-
-              <div className={styles.heroTech}>
-                <span className={styles.heroTechLabel}>Stack principale</span>
-                <ul className="tags">
-                  {technologies.slice(0, 5).map((technology) => (
-                    <li key={technology.name} className="tag">
-                      {technology.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <LanyardBadge />
-          </div>
-        </div>
-      </section>
+      <InkOrbitHero
+        titleTop="Je construis des"
+        titleAccent={["expériences web", "APIs robustes", "produits utiles"]}
+        description={site.description}
+        primaryCta="Voir mes projets"
+        primaryHref="/projects"
+        secondaryCta="Me contacter"
+        secondaryHref="/contact"
+        stack={technologies.slice(0, 5).map((technology) => technology.name)}
+        stackLabel="Stack principale"
+      />
 
       <section className="section" aria-labelledby="services-title">
         <div className="container">
